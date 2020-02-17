@@ -1,0 +1,62 @@
+.header
+    position: sticky
+    top: 0
+    left: 0
+    width: 100%
+    height: 80px
+    background: $dark
+    z-index: 999
+    &-inner
+        display: flex
+        justify-content: space-between
+        align-items: center
+        font-size: 14px
+        height: 100%
+    &__logo
+        font-family: 'Futura Demi'
+        text-transform: uppercase
+        a
+            color: $yellow
+            text-decoration: none
+
+.nav
+    flex: 1
+    max-width: 580px
+    &__list
+        display: flex
+        justify-content: space-between
+        align-items: center
+        list-style: none
+    &__item
+        transition: all .3s ease
+        a
+            font-family: 'Futura Book'
+            font-size: 14px
+            color: #fff
+            text-transform: uppercase
+            text-decoration: none
+            transition: all .3s ease
+        &:hover,
+        &.active
+            a
+                color: $yellow
+
+.contact
+    flex: 1 1 0
+    max-width: 320px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    &__phone
+        font-family: 'Futura Demi'
+        color: $yellow
+
+@media (max-width: 1069px)
+    .header
+        .contact
+            flex: none
+            .button
+                display: none
+@media (max-width: 891px)
+    .nav
+        display: none
