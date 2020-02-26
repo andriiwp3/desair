@@ -41,12 +41,38 @@
                 font-family: 'Futura Book'
                 font-size: 15px
                 transition: all .3s ease
+            
         &-image
             width: 100%
+            position: relative
             transition: all .3s ease
             & > img
                 width: 100%
                 transition: all .3s ease
+        &-arrows
+            display: none
+            justify-content: space-between
+            align-items: center
+            position: absolute
+            top: 50%
+            left: 50%
+            width: 120%
+            transform: translate(-50%, -50%)
+            z-index: 999
+
+        &-arrow
+            width: 50px
+            height: 50px
+            background-color: $yellow
+            border-radius: 50%
+            box-shadow: 0px 0px 15px rgba(227, 184, 115, 0.5);
+            display: flex
+            justify-content: center
+            align-items: center
+            transition: all .3s ease
+            &:hover
+                cursor: pointer
+                box-shadow: 0px 0px 30px rgba(227, 184, 115, 0.8);
     &__tab
         display: flex
         justify-content: space-between
@@ -94,6 +120,7 @@
                 justify-content: space-between
                 align-items: center
                 flex: 0.5
+
 @keyframes slideSubtitleOut
     from
         transform: translateX(0)
@@ -108,3 +135,59 @@
     to
         transform: translateX(0)
         opacity: 1
+
+@media (max-width: 1171px) 
+    .projects
+        &__slide
+            &--leftPart
+                margin: 0 auto
+                display: flex
+                flex-direction: column
+                align-items: center
+                text-align: center
+            &--rightPart
+                display: none
+            &-desc
+                width: 500px
+            &-image
+                margin-bottom: 50px
+            &-arrows
+                display: flex
+        &__slider
+            &-nav
+                display: none
+        &__title
+            max-width: 290px
+            &::after
+                top: 130%
+                left: 50%
+                transform: translateX(-50%)
+@media (max-width: 891px)
+    .projects
+        &__slide
+            &-arrows
+                width: 95%
+@media (max-width: 555px)
+    .projects
+        &__slide
+            &-desc
+                text-align: left
+                width: 100%
+@media (max-width: 420px)
+    .projects
+        &__slide
+            &-desc
+                &-row
+                    flex-direction: column
+                    margin-bottom: 
+                    &:first-child,
+                    &:last-child
+                        margin-bottom: 0
+                &-part
+                    margin-bottom: 30px
+            &-arrow
+                width: 40px
+                height: 40px
+                & > svg
+                    height: 15px
+            

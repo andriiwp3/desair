@@ -1,6 +1,17 @@
 'use strict';
 document.addEventListener("DOMContentLoaded", () => {
 
+    const adaptiveSlider = () => {
+        const sliderRightPart = document.querySelector('.projects__slide--rightPart'),
+            sliderImage = sliderRightPart.querySelector('.projects__slide-image'),
+            sliderImageClone = sliderImage.cloneNode(true),
+            slideDesc = document.querySelector('.projects__slide-desc');
+
+        if (window.matchMedia("(max-width: 1171px)").matches) {
+            slideDesc.before(sliderImageClone);
+        }
+    };
+
     const changeSlide = () => {
 
         const slideInfo = [{
@@ -31,7 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
             arrows = document.querySelectorAll('.arrow'),
             dots = document.querySelectorAll('.projects__slider-dot'),
             tabs = document.querySelectorAll('.projects__tab-title'),
-            tabsLine = document.querySelector('.projects__tab-line')
+            tabsLine = document.querySelector('.projects__tab-line'),
+            arrowsInCircle = document.querySelectorAll('.projects__slide-arrow');
         let counter = 0;
 
         getDataAttr(slideDescPart, slideDescName);
@@ -68,6 +80,23 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
+        arrowsInCircle.forEach((elem) => {
+            elem.addEventListener('click', (e) => {
+                changeSlideDescSubtitle();
+
+                if (counter < slideInfo.length - 1 && (e.target.classList.contains('projects__slide-right') || e.target.closest('div').classList.contains('projects__slide-right'))) {
+                    counter++;
+                } else if (counter == 0 && (e.target.classList.contains('projects__slide-left') || e.target.closest('div').classList.contains('projects__slide-left'))) {
+                    counter = slideInfo.length - 1;
+                } else if (counter > 0 && (e.target.classList.contains('projects__slide-left') || e.target.closest('div').classList.contains('projects__slide-left'))) {
+                    counter--;
+                } else {
+                    counter = 0;
+                }
+
+            });
+        });
+
         function changeSlideDescSubtitle() {
             const slideDescSubtitle = document.querySelectorAll('.projects__slide-desc--subtitle');
 
@@ -84,10 +113,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     document.querySelector('.projects__slider-dot.active').classList.remove('active');
                     dots[counter].classList.add('active');
 
-                    tabsLine.classList.add('active');
-                    tabsLine.style.width = tabs[counter].getBoundingClientRect().width + 'px';
-                    tabsLine.style.top = tabs[counter].offsetTop + tabs[counter].getBoundingClientRect().height + 10 + 'px';
-                    tabsLine.style.left = tabs[counter].getBoundingClientRect().left + 'px';
+                    if (tabsLine) {
+                        tabsLine.classList.add('active');
+                        tabsLine.style.width = tabs[counter].getBoundingClientRect().width + 'px';
+                        tabsLine.style.top = tabs[counter].offsetTop + tabs[counter].getBoundingClientRect().height + 10 + 'px';
+                        tabsLine.style.left = tabs[counter].getBoundingClientRect().left + 'px';
+                    }
                 }, 300);
             }
 
@@ -103,5 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     };
 
+
+    adaptiveSlider();
     changeSlide();
 });
