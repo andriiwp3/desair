@@ -1,0 +1,152 @@
+.form
+    font-family: 'Futura Book'
+    &-modal
+        position: fixed
+        top: 0
+        left: 0
+        width: 100%
+        height: 100vh
+        z-index: 99999
+        opacity: 0
+        pointer-events: none
+        transition: all .3s ease
+        &.active
+            opacity: 1
+            pointer-events: auto
+            .form-popup
+                transform: translateY(0)
+    &-wrapper
+        width: 100%
+        height: 100%
+        background-color: rgba(#000000, 0.5)
+        display: flex
+        justify-content: center
+        align-items: center
+    &-popup
+        max-width: 520px
+        box-sizing: border-box
+        padding: 30px 50px
+        background: $dark url(../img/form-bg.png) center no-repeat
+        position: relative
+        transform: translateY(50%)
+        transition: all .3s ease
+    &-close
+        position: absolute
+        top: 10px
+        right: 10px
+        cursor: pointer
+        &:hover
+            svg
+                transform: rotate(90deg)
+                path
+                stroke: $yellow
+        svg
+            transition: all .3s ease
+            path
+            transition: all .3s ease
+    &__title
+        font-family: 'Yeseva One'
+        font-size: 19px
+        line-height: 26px
+        text-align: center
+        max-width: 350px
+        margin-bottom: 35px
+    &-part
+        position: relative
+        height: 50px
+        margin-bottom: 20px
+        label
+            position: absolute
+            top: 25px
+            left: 0
+            transition: all .3s ease
+            font-size: 16px
+            pointer-events: none
+    &-input
+        width: 100%
+        height: 100%
+        box-sizing: border-box
+        box-shadow: none
+        outline: none
+        background: none
+        border: none
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15)
+        font-size: 16px
+        transition: all .3s ease
+        &:focus
+            border-bottom: 1px solid $yellow
+        &:focus ~ label,
+        &:valid ~ label
+            top: -5px
+            left: 0
+            font-size: 13px
+            font-weight: bold
+            letter-spacing: 0.1em
+            color: rgba(255, 255, 255, 0.5)
+    &-checkbox
+        margin-bottom: 40px
+        input
+            display: none
+            & + label:before 
+                content: "\2713"
+                color: transparent
+                border: 1px solid $yellow
+                display: inline-block
+                text-align: center
+                width: 18px
+                height: 18px
+                margin-right: 10px
+                cursor: pointer
+                transition: all .3s ease
+            &:checked
+                & + label:before
+                    background-color: $yellow
+                    color: #fff
+    &-button
+        width: 50%
+        display: block
+        margin-left: auto
+    &-message
+        padding: 30px
+        border-radius: 20px
+        font-size: 16px
+        transition: all .5s ease
+        opacity: 0
+        &.succes
+            opacity: 1
+            background-color: rgba(#75daad, 0.3)
+            border: 3px solid #21bf73
+            p
+                color: #21bf73
+        &.failure
+            opacity: 1
+            background-color: rgba(#ff5d6c, 0.3)
+            border: 3px solid #f0134d
+            p
+                font-family: 'Futura Book'
+                font-weight: bold
+                color: #ee8572
+        &.loading
+            opacity: 1
+            background-color: rgba(#ffe75e, 0.3)
+            border: 3px solid #feb72b
+            p
+                font-family: 'Futura Book'
+                font-weight: bold
+                color: #ffe196
+        p
+            font-family: 'Futura Book'
+            font-weight: bold
+            letter-spacing: 0.05em
+
+@media (max-width: 400px)
+    .form
+        &-wrapper
+            padding: 0 20px
+        &-popup
+            padding: 30px
+        &-checkbox
+            label
+                font-size: 14px
+        &-button
+            width: 100%
