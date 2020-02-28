@@ -163,16 +163,19 @@ document.addEventListener("DOMContentLoaded", () => {
             buttons.forEach(elem => {
                 elem.addEventListener('click', () => {
                     formPopup.classList.add('active');
+                    document.body.style.overflow = 'hidden';
                 });
             });
 
             formClose.addEventListener('click', () => {
                 formPopup.classList.remove('active');
+                document.body.style.overflow = 'auto';
             });
 
             formPopup.addEventListener('click', (e) => {
                 if (e.target === document.querySelector('.form-wrapper') || e.target === formPopup) {
                     formPopup.classList.remove('active');
+                    document.body.style.overflow = 'auto';
                 }
             });
         };
@@ -220,6 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     .then(() => {
                         setTimeout(() => {
                             formPopup.classList.remove('active');
+                            document.body.style.overflow = 'auto';
                             statusMessage.className = 'form-message';
                             statusMessage.innerHTML = '';
                         }, 3000);
