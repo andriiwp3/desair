@@ -32,8 +32,44 @@
             letter-spacing: -0.07em
             text-transform: uppercase
             color: $yellow
+        &--small
+            font-family: 'Yeseva One'
+            font-size: 20px
+            text-align: center
+            text-transform: uppercase
+            margin-bottom: 20px
+            color: #ffffff
     &__subtitle
         font-family: 'Futura Book'
         font-size: 18px
         line-height: 29px
         color: #ffffff
+    &-icon
+        position: relative
+        display: inline-block
+        left: 50%
+        transform: translateX(-50%)
+        margin-bottom: 30px
+        &::before,
+        &::after
+            content: ''
+            position: absolute
+            width: 35px
+            height: 2px
+            top: 50%
+            transform: translateY(-50%)
+            border-radius: 30px
+            background-color: $yellow
+        &::before
+            left: -150%
+        &::after
+            right: -150%
+    &__desc
+        font-family: 'Futura Book'
+        font-size: 20px
+        line-height: 34px
+        text-align: center
+        color: #363636
+        max-width: 680px
+        margin: 0 auto
+        margin-bottom: 90px

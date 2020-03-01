@@ -145,14 +145,15 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const form = () => {
-        const formPopup = document.querySelector('.form-modal'),
-            form = document.querySelector('.form'),
-            statusMessage = document.querySelector('.form-message'),
+        const formModal = document.querySelector('.form-modal'),
+            popupForm = document.querySelector('.popup-form'),
+            popupFormStatusMessage = formModal.querySelector('.form-message'),
             message = {
                 succes: 'Yeah! Your application has been sent successfully! Our manager will contact you shortly.',
                 failure: 'Oops! Something went wrong, please check the entered data or try again later.'
             },
-            input = form.querySelectorAll('input');
+            controlForm = document.querySelector('.control-form'),
+            controlFormStatusMessage = document.querySelector('.control-form-message');
 
 
 
@@ -162,30 +163,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
             buttons.forEach(elem => {
                 elem.addEventListener('click', () => {
-                    formPopup.classList.add('active');
+                    formModal.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 });
             });
 
             formClose.addEventListener('click', () => {
-                formPopup.classList.remove('active');
+                formModal.classList.remove('active');
                 document.body.style.overflow = 'auto';
             });
 
-            formPopup.addEventListener('click', (e) => {
-                if (e.target === document.querySelector('.form-wrapper') || e.target === formPopup) {
-                    formPopup.classList.remove('active');
+            formModal.addEventListener('click', (e) => {
+                if (e.target === document.querySelector('.form-wrapper') || e.target === formModal) {
+                    formModal.classList.remove('active');
                     document.body.style.overflow = 'auto';
                 }
             });
         };
 
-        const sendForm = (elem) => {
+        const sendForm = (elem, messageBlock) => {
             elem.addEventListener('submit', e => {
                 e.preventDefault();
                 let formData = new FormData(elem);
 
-                function postData(data) {
+                function postData(data, messageBlock) {
                     return new Promise(function (resolve, reject) {
                         let request = new XMLHttpRequest();
 
@@ -210,6 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 } // End postData
 
                 function clearInput() {
+                    const input = elem.querySelectorAll('input');
                     for (let i = 0; i < input.length; i++) {
                         input[i].value = '';
                     }
@@ -217,32 +219,81 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 postData(formData)
                     .then(() => {
-                        statusMessage.classList.add('succes');
-                        statusMessage.innerHTML = `<p>${message.succes}</p>`;
+                        messageBlock.classList.add('succes');
+                        messageBlock.innerHTML = `<p>${message.succes}</p>`;
                     })
                     .then(() => {
                         setTimeout(() => {
-                            formPopup.classList.remove('active');
+                            if (elem.closest('.form-modal')) {
+                                elem.closest('.form-modal').classList.remove('active');
+                            }
                             document.body.style.overflow = 'auto';
-                            statusMessage.className = 'form-message';
-                            statusMessage.innerHTML = '';
+                            messageBlock.classList.remove('succes');
+                            messageBlock.innerHTML = '';
                         }, 3000);
 
                     })
                     .catch(() => {
-                        statusMessage.classList.add('failure');
-                        statusMessage.innerHTML = `<p>${message.failure}</p>`;
+                        messageBlock.classList.add('failure');
+                        messageBlock.innerHTML = `<p>${message.failure}</p>`;
+                        setTimeout(() => {
+                            if (elem.closest('.form-modal')) {
+                                elem.closest('.form-modal').classList.remove('active');
+                            }
+                            document.body.style.overflow = 'auto';
+                            messageBlock.classList.remove('failure');
+                            messageBlock.innerHTML = '';
+                        }, 3000);
                     })
                     .then(clearInput)
             });
         };
 
 
-        sendForm(form);
+        sendForm(popupForm, popupFormStatusMessage);
+        sendForm(controlForm, controlFormStatusMessage);
         showAndHideForm();
+    };
+
+    const video = () => {
+        const video = document.querySelector('.control__video video'),
+            playBtn = document.querySelector('.control__video-play'),
+            volumeIcon = document.querySelector('.control__video-volume svg'),
+            volumeRange = document.querySelector('.control__video-volume-range'),
+            volumeRangeInput = volumeRange.querySelector('#volume'),
+            controls = document.querySelector('.control__video-controls');
+
+        video.addEventListener('canplaythrough', () => {
+            controls.classList.remove('hidden');
+            video.volume = volumeRangeInput.value;
+        });
+
+        playBtn.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                playBtn.innerHTML = ' <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><path d="M181.333,0H74.667c-17.643,0-32,14.357-32,32v448c0,17.643,14.357,32,32,32h106.667c17.643,0,32-14.357,32-32V32 C213.333,14.357,198.976,0,181.333,0z" fill="white"/> <path d="M437.333,0H330.667c-17.643,0-32,14.357-32,32v448c0,17.643,14.357,32,32,32h106.667c17.643,0,32-14.357,32-32V32 C469.333,14.357,454.976,0,437.333,0z" fill="white"/> </svg>';
+            } else {
+                video.pause();
+                playBtn.innerHTML = '<svg width="21" height="26" viewBox="0 0 21 26" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M21 13L7.65417e-07 25.1244L1.82536e-06 0.875644L21 13Z" fill="white" /></svg>';
+            }
+        });
+
+        volumeIcon.addEventListener('click', () => {
+            volumeRange.classList.toggle('hidden');
+        });
+
+        volumeRangeInput.addEventListener('input', () => {
+            video.volume = volumeRangeInput.value;
+        });
+
+        video.addEventListener('ended', () => {
+            video.currentTime = 0;
+            playBtn.innerHTML = '<svg width="21" height="26" viewBox="0 0 21 26" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M21 13L7.65417e-07 25.1244L1.82536e-06 0.875644L21 13Z" fill="white" /></svg>';
+        });
     };
 
 
     slider();
+    video();
     form();
 });
