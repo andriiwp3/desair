@@ -1,0 +1,61 @@
+.types
+    margin-bottom: 125px
+    &-card
+        max-width: 390px
+        position: relative
+        &s
+            display: flex
+            justify-content: space-between
+            align-items: center
+        &-img
+            img
+                width: 100%
+        &-desc
+            position: absolute
+            max-width: 330px
+            top: 75%
+            left: 30px
+            right: 30px
+            background-color: #fff
+            padding-top: 25px
+            padding-left: 35px
+            padding-right: 35px
+            margin-bottom: 125px
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.05)
+        &-title
+            font-family: 'Yeseva One'
+            font-size: 18px
+            line-height: 25px
+            color: #363636
+            margin-bottom: 15px
+        &-list
+            padding-left: 15px
+            margin-bottom: 40px
+            &__item
+                font-family: 'Futura Book'
+                font-size: 15px
+                line-height: 25px
+                color: #959595
+        &-button
+            position: relative
+            left: -35px
+            transform: translateY(50%)
+            &:hover
+                transform: translate(0, 50%) scale(0.95) skew(-5deg)
+@media (max-width: 1291px)
+    .types
+        &-card
+            margin-bottom: 295px;
+            &s
+                flex-direction: column
+@media (max-width: 450px)
+    .types
+        &-card
+            max-width: 340px
+@media (max-width: 380px)
+    .types
+        &-card
+            margin-bottom: 420px
+            &-list
+                &__item
+                    font-size: 13px
