@@ -1,0 +1,88 @@
+.advantages
+    position: relative
+    height: 610px
+    &-inner
+        display: flex
+        justify-content: space-between
+        align-items: center
+    &-block
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        background: #ffffff url(../img/house.jpg) left no-repeat
+    &-circle
+        position: absolute
+        top: 5%
+        left: -53%
+        width: 682px
+        height: 105%
+        border: 3px solid $yellow
+        border-radius: 50%
+        background: transparent
+    &-list
+        position: relative
+        height: 80%
+        display: flex
+        flex-direction: column
+        justify-content: space-around
+        top: 55%
+        left: 91%
+        transform: translateY(-50%)
+                
+    &-item
+        display: flex
+        align-items: center
+        &:nth-child(1)
+            transform: translateX(-75px)
+        &:nth-child(2)
+            transform: translateX(-10px)
+        &:nth-child(4)
+            transform: translateX(-5px)
+        &:nth-child(4)
+            transform: translateX(-50px)
+        &-number
+            width: 40px
+            height: 40px
+            background-color: $yellow
+            display: flex
+            justify-content: center
+            align-items: center
+            box-sizing: content-box
+            border-radius: 50%
+            border: 12px solid #ffffff
+            font-family: 'Yeseva One'
+            font-size: 18px
+            color: #FFFFFF
+        &-desc
+            max-width: 385px
+            font-family: 'Futura Medium'
+            font-size: 18px
+            line-height: 21px
+            color: #363636
+    &-form
+        &-wrapper
+            margin-left: auto
+            transform: translateY(0)
+            position: relative
+    &-help
+        position: absolute
+        display: flex
+        justify-content: space-between
+        align-items: center
+        &-icon
+            width: 70px
+            height: 70px
+            background-color: $yellow
+            border-radius: 50%
+            display: flex
+            justify-content: center
+            align-items: center
+@media (max-width: 1291px)
+    .advantages
+        &-form
+            &-wrapper
+                display: none
+@media (max-width: 875px)
+    .advantages
+        display: none

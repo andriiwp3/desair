@@ -153,7 +153,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 failure: 'Oops! Something went wrong, please check the entered data or try again later.'
             },
             controlForm = document.querySelector('.control-form'),
-            controlFormStatusMessage = document.querySelector('.control-form-message');
+            controlFormStatusMessage = document.querySelector('.control-form-message'),
+            advantagesForm = document.querySelector('.advantages-form'),
+            advantagesFormMessage = document.querySelector('.advantages-form-message');
 
 
 
@@ -252,6 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         sendForm(popupForm, popupFormStatusMessage);
         sendForm(controlForm, controlFormStatusMessage);
+        sendForm(advantagesForm, advantagesFormMessage);
         showAndHideForm();
     };
 
