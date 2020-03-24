@@ -1,0 +1,51 @@
+.repair
+    background: $dark url(../img/repairs/bg.jpg) center no-repeat
+    background-size: cover
+    &-inner
+        display: flex
+        justify-content: space-between
+        align-items: center
+    &__title
+        max-width: 250px
+        margin-bottom: 50px
+    &__list
+        display: inline-block
+        &-item
+            list-style: none
+            font-family: 'Proxima Nova'
+            font-style: normal
+            font-weight: normal
+            font-size: 20px
+            line-height: 34px
+            color: #ffffff
+            transition: all .3s ease
+            position: relative
+            margin-bottom: 10px
+            &::after
+                content: ''
+                position: absolute
+                width: 0
+                height: 1px
+                background-color: $yellow
+                left: 0
+                top: 100%
+                transition: all .5s ease
+            &:hover,
+            &.active
+                color: $yellow
+                cursor: pointer
+                &::after
+                    width: 100%
+    &-rightPart
+        display: flex
+        justify-content: space-between
+        align-items: center
+    &-col
+        display: flex
+        flex-direction: column
+        img
+            margin: 20px
+            transition: all .5s ease
+@media (max-width: 1130px)
+    .repair
+        display: none
