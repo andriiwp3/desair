@@ -1,0 +1,69 @@
+.steps
+    padding-top: 100px
+    background-color: $dark
+    &-row
+        display: flex
+        justify-content: space-between
+        align-items: center
+    &-nav
+        display: flex
+        justify-content: space-between
+        align-items: center
+        flex-wrap: wrap
+        padding-top: 5%
+        list-style: none
+        &__item
+            width: 33%
+            margin-bottom: 50px
+            color: #5A5A5A
+            &.active
+                color: #ffffff
+                span::after
+                    opacity: 1
+        &__number
+            font-family: 'Yeseva One'
+            font-size: 17px
+            text-transform: uppercase
+            position: relative
+            color: inherit
+            &::after
+                content: ''
+                position: absolute
+                width: 100%
+                height: 1px
+                top: calc( 100% + 5px )
+                left: 0
+                background-color: $yellow
+                opacity: 0.3
+        &__desc
+            max-width: 125px
+            padding-top: 18px
+            font-family: 'Futura Book'
+            font-size: 15px
+            line-height: 1.2em
+            color: inherit
+    &-slide
+        display: flex
+        justify-content: space-between
+        align-items: center
+        &-desc
+            margin-right: 150px
+        &__title
+            font-family: 'Yeseva One'
+            font-size: 18px
+            line-height: 1.3em
+            text-transform: uppercase
+            color: $yellow
+            max-width: 255px
+            margin-bottom: 20px
+        &__desc
+            font-family: 'Futura Book'
+            font-size: 15px
+            line-height: 1.7em
+            color: #FFFFFF
+            max-width: 330px
+        img
+            max-width: 735px
+@media (max-width: 1091px)
+    .steps
+        display: none

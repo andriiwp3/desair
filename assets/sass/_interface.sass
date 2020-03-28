@@ -26,12 +26,22 @@
 .section
     &__title
         &--big
+            position: relative
             font-family: 'Yeseva One'
             font-size: 27px
             line-height: 37px
-            letter-spacing: -0.07em
+            letter-spacing: 0.005em
+            max-width: 175px
             text-transform: uppercase
             color: $yellow
+            &::after
+                content: ''
+                position: absolute
+                width: 100px
+                height: 1px
+                background-color: $yellow
+                bottom: 25%
+                left: 90%
         &--small
             font-family: 'Yeseva One'
             font-size: 20px
