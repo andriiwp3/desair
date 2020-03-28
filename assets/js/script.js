@@ -389,9 +389,8 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
 
-
     slider();
     video();
     form();
-    tabs()
+    tabs();
 });

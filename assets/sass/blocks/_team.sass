@@ -1,0 +1,83 @@
+.team
+    background-color: $dark
+    &-cards
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin-top: 75px
+        &__item
+            position: relative
+            &:hover
+                .team-cards
+                    &__img
+                        box-shadow: 0px 5px 20px rgba(227, 184, 115, 0.5)
+                    &__desc
+                        margin: 0
+                        transform: translateY(-100%)
+        &__img
+            transition: all .3s ease
+        &__icon
+            display: block
+            position: absolute
+            top: 0
+            left: 0
+            transform: translate3d(-50%, -50%, 0)
+            background-color: $yellow
+            padding: 13px
+            display: flex
+            justify-content: center
+            align-items: center
+            box-shadow: 0px 5px 20px rgba(227, 184, 115, 0.5)
+            svg
+                width: 40px
+                height: auto
+                stroke: #ffffff
+                fill: #ffffff
+        &__desc
+            margin: 0 20px
+            padding: 15px 0 0
+            background-color: #ffffff
+            text-align: center
+            transform: translateY(-50%)
+            transition: margin .5s ease, transform .3s ease .5s
+        &__title
+            font-family: 'Yeseva One'
+            font-size: 18px
+            line-height: 1.4em
+            color: $dark
+        &__subtitle
+            font-family: 'Futura Book'
+            font-size: 18px
+            line-height: 1.45em
+            color: #959595
+            margin-bottom: 15px
+        &__experience
+            background: $yellow
+            padding: 13px 0 
+            font-family: 'Yeseva One'
+            font-weight: bold
+            font-size: 13px
+            line-height: 1.5em
+            text-transform: uppercase
+@media (max-width: 991px)
+    .team
+        &-cards
+            flex-direction: column
+            justify-content: center
+            align-items: center
+@media (max-width: 350px)
+    .team
+        &-cards
+            &__item
+                &:hover
+                    .team-cards
+                        &__desc
+                            transform: translateY(-100%)
+            &__icon
+                svg
+                    width: 30px
+            &__img
+                max-width: 220px
+            &__desc
+                margin: 0
+                transition: margin .5s ease, transform .3s ease 0s
