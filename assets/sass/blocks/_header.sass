@@ -17,7 +17,16 @@
         text-transform: uppercase
         a
             color: $yellow
-            text-decoration: none
+            text-decoration: none  
+    &-contact
+        flex: 1 1 0
+        max-width: 320px
+        display: flex
+        justify-content: space-between
+        align-items: center
+        &__phone
+            font-family: 'Futura Demi'
+            color: $yellow
 
 .nav
     flex: 1
@@ -40,20 +49,9 @@
         &.active
             a
                 color: $yellow
-
-.contact
-    flex: 1 1 0
-    max-width: 320px
-    display: flex
-    justify-content: space-between
-    align-items: center
-    &__phone
-        font-family: 'Futura Demi'
-        color: $yellow
-
 @media (max-width: 1069px)
     .header
-        .contact
+        &-contact
             flex: none
             .button
                 display: none

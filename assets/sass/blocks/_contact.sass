@@ -1,0 +1,137 @@
+.contact
+    width: 100%
+    background: $dark url('../img/contact-bg.jpg')
+    position: relative
+    margin-top: 100px
+    padding: 100px 0
+    &::after
+        content: ''
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        background-color: $dark
+        opacity: 0.1
+    &-inner
+        position: relative
+        z-index: 1
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+    &__title
+        max-width: 540px
+        text-align: center
+        font-size: 20px
+        line-height: 1.4em
+        margin: 0 auto 30px
+        &::after
+            display: none
+    &-social
+        display: flex
+        justify-content: space-between
+        align-items: center
+        width: 71px
+        margin: 0 auto 40px
+        &__item
+            width: 28px
+            height: 28px
+            border-radius: 50%
+            background-color: $yellow
+            a
+                display: block
+                width: 28px
+                height: 28px
+                display: flex
+                justify-content: center
+                align-items: center      
+                svg
+                    stroke: #ffffff
+    &-map
+        max-width: 925px
+        width: 100%
+        height: 465px
+        iframe
+            width: 100%
+            height: 100%
+    &-form
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-wrap: wrap
+        max-width: 520px
+        &-wrapper
+            max-width: max-content
+            margin: 0 auto
+            padding: 35px 180px
+            transform: translateY(0)
+        &__title
+            margin: 0 auto 35px
+            font-family: 'Yeseva One'
+            font-weight: bold
+            font-size: 20px
+            line-height: 28px
+            text-transform: uppercase
+        &-part
+            width: 100%
+            margin-bottom: 50px
+            &.maw
+                width: calc(50% - 30px)
+            &.mr
+                margin-right: 60px
+        &-checkbox
+            margin-bottom: 50px
+        &-button
+            margin: 0 auto
+        &-message
+            max-width: 520px
+@media (max-width: 768px)
+    .contact
+        margin-top: 0
+        padding-top: 0
+        background: $dark
+        &::after
+            opacity: 1
+        &-form
+            &-wrapper
+                padding: 35px 120px
+@media (max-width: 668px)
+    .contact
+        padding-bottom: 0
+        &__title
+            order: 1
+        &-social
+            order: 2
+        &-map
+            height: 300px
+            margin-bottom: 40px
+        &-form
+            &-part
+                margin-bottom: 30px
+                &.maw
+                    width: 100%
+                &.mr
+                    margin-right: 0
+@media (max-width: 568px)
+    .contact
+        &-form
+            justify-content: flex-start
+            &-wrapper
+                padding: 35px 20px
+            &-button
+                width: 100%
+@media (max-width: 468px)
+    .contact
+        &__title
+            font-size: 16px
+        &-map
+            height: 255px
+@media (max-width: 315px)
+    .contact
+        &__title
+            font-size: 15px
+        &-form
+            &-checkbox
+                label
+                    font-size: 13px

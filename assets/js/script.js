@@ -3,20 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const slider = () => {
 
-        const mq = window.matchMedia("(max-width: 1171px)");
-
-        const adaptiveSlider = () => {
-            const sliderRightPart = document.querySelector('.projects__slide--rightPart'),
-                sliderImage = sliderRightPart.querySelector('.projects__slide-image'),
-                sliderImageClone = sliderImage.cloneNode(true),
-                slideDesc = document.querySelector('.projects__slide-desc');
-
-            if (mq.matches) {
-                slideDesc.before(sliderImageClone);
-            }
-        };
-
-
         const changeSlide = () => {
 
             const slideInfo = [{
@@ -140,7 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
 
-        adaptiveSlider();
         changeSlide();
     };
 
@@ -155,7 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
             controlForm = document.querySelector('.control-form'),
             controlFormStatusMessage = document.querySelector('.control-form-message'),
             advantagesForm = document.querySelector('.advantages-form'),
-            advantagesFormMessage = document.querySelector('.advantages-form-message');
+            advantagesFormMessage = document.querySelector('.advantages-form-message'),
+            contactForm = document.querySelector('.contact-form'),
+            contactFormMessage = document.querySelector('.contact-form-message');
 
 
 
@@ -255,6 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sendForm(popupForm, popupFormStatusMessage);
         sendForm(controlForm, controlFormStatusMessage);
         sendForm(advantagesForm, advantagesFormMessage);
+        sendForm(contactForm, contactFormMessage);
         showAndHideForm();
     };
 

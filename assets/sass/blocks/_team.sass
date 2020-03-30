@@ -1,4 +1,5 @@
 .team
+    padding: 50px 0 100px
     background-color: $dark
     &-cards
         display: flex
@@ -59,12 +60,27 @@
             font-size: 13px
             line-height: 1.5em
             text-transform: uppercase
+    &__subtitle
+        position: relative
+        max-width: 550px
+        &::before
+            content: ''
+            position: absolute
+            width: 55px
+            height: 2px
+            background-color: $yellow
+            top: -20px
+            left: 50%
+            transform: translateX(-50%)
 @media (max-width: 991px)
     .team
         &-cards
             flex-direction: column
             justify-content: center
             align-items: center
+@media (max-width: 550px)
+    .team__subtitle
+        display: none
 @media (max-width: 350px)
     .team
         &-cards

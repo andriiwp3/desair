@@ -53,6 +53,7 @@
         cursor: pointer
         &-desc
             margin-right: 150px
+            min-width: 215px
         &__title
             font-family: 'Yeseva One'
             font-size: 18px
@@ -69,6 +70,10 @@
             max-width: 330px
         img
             max-width: 735px
+.owl
+    &-one
+        .owl-nav
+            margin-top: 50px
 @media (max-width: 1091px)
     .steps
         &__title
@@ -85,10 +90,12 @@
             align-items: center
             text-align: center
     .owl
-        &-stage-outer
-            display: none
-        &-nav
-            text-align: center
+        &-one
+            .owl
+                &-stage-outer
+                    display: none
+                &-nav
+                    text-align: center
 @media (max-width: 566px)
     .steps
         &-nav__item
@@ -97,3 +104,7 @@
     .steps
         &-nav__item
             width: 100%
+    .owl
+        &-one
+            .owl-nav
+                margin-top: 25px

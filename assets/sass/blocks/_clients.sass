@@ -1,0 +1,104 @@
+.clients
+    padding: 50px 0
+    &-card
+        display: flex
+        justify-content: space-between
+        align-items: center
+        &__item
+            width: 380px !important
+            padding-top: 25px
+            box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1)
+            margin-bottom: 50px
+            transition: all .5s ease
+            &:hover
+                box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2)
+                .clients-card__details
+                    margin: 0
+                    transform: translateY(0)
+        &__author
+            display: flex
+            align-items: center
+            padding: 0 30px 0 20px
+            margin-bottom: 20px
+            img
+                width: 75px !important
+                height: 75px
+                border-radius: 50%
+        &__name
+            font-family: 'Yeseva One'
+            font-weight: bold
+            font-size: 18px
+            line-height: 1.3em
+            color: $dark
+            max-width: 180px
+            margin-left: 20px
+        &__message
+            font-family: 'Futura Book'
+            font-size: 15px
+            line-height: 1.8em
+            color: #959595
+            padding: 0 30px 0 20px
+            margin-bottom: 50px
+        &__details
+            display: flex
+            justify-content: space-between
+            align-items: center
+            background: $yellow
+            box-shadow: 5px 5px 20px rgba($yellow, 0.8)
+            transform: translateY(50%)
+            transition: width .3s ease
+            position: relative
+            margin: 0 20px
+            transition: margin .5s ease, transform .3s ease .5s
+            &::after
+                content: ''
+                position: absolute
+                top: 0
+                left: 50%
+                transform: translateX(-50%)
+                width: 1px
+                height: 100%
+                background-color: #ffffff
+        &__area,
+        &__time
+            display: flex
+            justify-content: center
+            align-items: center
+            padding: 11px 11px 11px 17px
+            svg
+                margin-right: 15px
+            p
+                font-family: 'Yeseva One'
+                font-style: normal
+                font-weight: normal
+                font-size: 17px
+                line-height: 24px
+                text-transform: uppercase
+@media (max-width: 1275px)
+    .owl
+        &-two
+            .owl-item
+                display: flex
+                justify-content: center
+                align-items: center
+@media (max-width: 1091px)
+    .owl
+        &-two
+            .owl
+                &-stage-outer
+                    display: block
+                &-item
+                    display: flex
+                    justify-content: center
+@media (max-width: 391px)
+    .clients
+        &-card
+            &__item
+                transform: scale(.9)
+            &__details
+                margin: 0
+                transition: margin .5s ease, transform .3s ease 0s
+            &__area,
+            &__time
+                p
+                    font-size: 15px
